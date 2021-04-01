@@ -3,6 +3,7 @@ elementMapper\CategoryPageElementMapper.class
 utils\Browser.class
 elementMapper\CartPageElementMapper.class
 elementMapper\ProductPageElementMapper.class
+pageObjects\CreateAccountPage.class
 utils\Utils.class
 pageObjects\CategoryPage.class
 pageObjects\HomePage.class
@@ -16,4 +17,5 @@ pageObjects\BasePage.class
 pageObjects\CartPage.class
 elementMapper\SearchPageElementMapper.class
 pageObjects\SearchPage.class
+elementMapper\CreateAccountPageElementMapper.class
 tests\SetupTest.class

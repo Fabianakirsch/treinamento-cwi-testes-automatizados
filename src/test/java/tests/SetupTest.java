@@ -4,6 +4,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,14 +23,14 @@ import static org.junit.Assert.*;
 @Feature("Testes site de ecommerce")
 public class SetupTest extends BaseTests {
 
-    @Test
+    @Test @Ignore
     @Story("Abrir o site")
     public void testOpeningBrowserAndLoadingPage() {
         assertTrue(Browser.getCurrentDriver().getCurrentUrl().contains(Utils.getBaseUrl()));
         System.out.println("Abrimos o navegador e carregamos a url");
     }
 
-    @Test
+    @Test @Ignore
     @Story("Realizar o login")
     public void testLogin() {
         //Iniciar as páginas
@@ -71,7 +72,7 @@ public class SetupTest extends BaseTests {
 //        System.out.println("Validou a minha conta no site");
     }
 
-    @Test
+    @Test @Ignore
     public void testSearch() {
 
         String quest = "T-SHIRT";
@@ -91,7 +92,7 @@ public class SetupTest extends BaseTests {
         System.out.println("Realizada a pesquisa do produto");
     }
 
-    @Test
+    @Test @Ignore
     public void testAcessSearch() {
 
         //Iniciar as páginas
@@ -109,7 +110,7 @@ public class SetupTest extends BaseTests {
         System.out.println("Realizado o acesso na página do produto pesquisado");
     }
 
-    @Test
+    @Test @Ignore
     public void testAddToCar() {
         //Iniciar as páginas
         HomePage home = new HomePage();
@@ -131,7 +132,7 @@ public class SetupTest extends BaseTests {
     }
 
 
-    @Test
+    @Test @Ignore
     public void testAcessCategoryTShirts() {
         //Iniciar as páginas
         HomePage home = new HomePage();
@@ -146,7 +147,7 @@ public class SetupTest extends BaseTests {
         System.out.println("A página de categoria foi acessada");
     }
 
-    @Test
+    @Test @Ignore
     public void testAddProductToProductPage() {
         //Acessar a categoria T-Shirts
         testAcessCategoryTShirts();
@@ -166,7 +167,7 @@ public class SetupTest extends BaseTests {
         System.out.println("Acesso a PDP");
     }
 
-    @Test
+    @Test @Ignore
     public void testAddProductToCartPage() {
         //Acessa a página de produto
         testAddProductToProductPage();
@@ -189,9 +190,10 @@ public class SetupTest extends BaseTests {
         assertEquals(cart.getNameProductCart(), nameProductPDP);
     }
 
-    //DESAFIO
+    //DESAFIO --------------------------------------------------------------------------------------------
 
     @Test
+    @Story("desafio: acessar a página Sign In")
     public void startSignIn() {
         //Iniciar as páginas
         HomePage home = new HomePage();
@@ -201,10 +203,12 @@ public class SetupTest extends BaseTests {
         home.clickBtbLogin();
         //Validação
         assertTrue(login.isPageLogin());
-        System.out.println("Acessada a página de login");
+        System.out.println("Acessada a página de Sign In");
     }
 
+
     @Test
+    @Story("desafio: inserir e-mail para criação da conta")
     public void insertEmailForCreateAnAccount() {
         startSignIn();
 
@@ -224,6 +228,7 @@ public class SetupTest extends BaseTests {
     }
 
     @Test
+    @Story("desafio: criar conta de novo usuário")
     public void createAnAccount() {
         insertEmailForCreateAnAccount();
 
@@ -252,6 +257,7 @@ public class SetupTest extends BaseTests {
     }
 
     @Test
+    @Story("desafio: testar não preencher informações obrigatórias na criação da conta")
     public void noInformationRequiredWhenCreateAnAccount() {
         insertEmailForCreateAnAccount();
 
@@ -404,6 +410,7 @@ public class SetupTest extends BaseTests {
     }
 
     @Test
+    @Story("desafio: testar inserir e-mail já existente na criação de conta")
     public void repeatEmailWhenCreateAnAccount() {
         startSignIn();
 
@@ -417,11 +424,12 @@ public class SetupTest extends BaseTests {
         login.clickButtonCreateAnAccount();
         //Validação
         login.isErrorCreateAccount();
-        System.out.println("Já existe uma conta cadastrada com o e-mail inserido");
+        System.out.println("Verificou que já existe uma conta cadastrada com o e-mail inserido");
     }
 
     @Test
-    public void incorrectFormatZip() {
+    @Story("desafio: testar preencher o campo PostalCode com o formato incorreto")
+    public void incorrectFormatPostalCode() {
         startSignIn();
 
         //Iniciar as páginas
